@@ -11,7 +11,7 @@
   "profiles": {
     "GFLIndexBackend": {
       "commandName": "Project",
-      "launchUrl": "api/gfl",
+      "launchUrl": "gflindex",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -20,7 +20,7 @@
     },
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchUrl": "api/gfl",
+      "launchUrl": "gflindex",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

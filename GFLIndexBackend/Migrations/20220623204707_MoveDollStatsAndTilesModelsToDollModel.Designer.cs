@@ -4,6 +4,7 @@ using GFLIndexBackend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GFLIndexBackend.Migrations
 {
     [DbContext(typeof(GFLContext))]
-    partial class GFLContextModelSnapshot : ModelSnapshot
+    [Migration("20220623204707_MoveDollStatsAndTilesModelsToDollModel")]
+    partial class MoveDollStatsAndTilesModelsToDollModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,6 +32,39 @@ namespace GFLIndexBackend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("Armor")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ArmorPenetration")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseAccuracy")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseAmmoConsumption")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseDamage")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseEvasion")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseHealth")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseRateOfFire")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseRationConsumption")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CriticalDamage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CriticalRate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("DollRarityId")
                         .HasColumnType("int");
 
@@ -39,8 +74,17 @@ namespace GFLIndexBackend.Migrations
                     b.Property<byte[]>("Image")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<int?>("MoveSpeed")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TileBaseDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("TileImage")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
 
@@ -49,40 +93,6 @@ namespace GFLIndexBackend.Migrations
                     b.HasIndex("DollTypeId");
 
                     b.ToTable("Dolls");
-                });
-
-            modelBuilder.Entity("GFLIndexBackend.Models.DollMod", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("DollId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DollRarityId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DollTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("Image")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DollId");
-
-                    b.HasIndex("DollRarityId");
-
-                    b.HasIndex("DollTypeId");
-
-                    b.ToTable("DollMods");
                 });
 
             modelBuilder.Entity("GFLIndexBackend.Models.DollRarity", b =>
@@ -118,9 +128,6 @@ namespace GFLIndexBackend.Migrations
                     b.Property<int>("DollId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DollModId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("InitialCooldown")
                         .HasColumnType("int");
 
@@ -130,8 +137,6 @@ namespace GFLIndexBackend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DollId");
-
-                    b.HasIndex("DollModId");
 
                     b.ToTable("DollSkills");
                 });
@@ -144,16 +149,31 @@ namespace GFLIndexBackend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("Accuracy")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AmmoConsumption")
-                        .HasColumnType("int");
-
                     b.Property<int?>("Armor")
                         .HasColumnType("int");
 
                     b.Property<int?>("ArmorPenetration")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseAccuracy")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseAmmoConsumption")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseDamage")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseEvasion")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseHealth")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseRateOfFire")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BaseRationConsumption")
                         .HasColumnType("int");
 
                     b.Property<string>("CriticalDamage")
@@ -162,35 +182,15 @@ namespace GFLIndexBackend.Migrations
                     b.Property<string>("CriticalRate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Damage")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DollId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DollModId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Evasion")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Health")
+                    b.Property<int?>("DollId")
                         .HasColumnType("int");
 
                     b.Property<int?>("MoveSpeed")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RateOfFire")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RationConsumption")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DollId");
-
-                    b.HasIndex("DollModId");
 
                     b.ToTable("DollStats");
                 });
@@ -206,10 +206,7 @@ namespace GFLIndexBackend.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DollId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DollModId")
+                    b.Property<int?>("DollId")
                         .HasColumnType("int");
 
                     b.Property<byte[]>("TileImage")
@@ -218,8 +215,6 @@ namespace GFLIndexBackend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DollId");
-
-                    b.HasIndex("DollModId");
 
                     b.ToTable("DollTiles");
                 });
@@ -255,29 +250,6 @@ namespace GFLIndexBackend.Migrations
                     b.Navigation("Type");
                 });
 
-            modelBuilder.Entity("GFLIndexBackend.Models.DollMod", b =>
-                {
-                    b.HasOne("GFLIndexBackend.Models.Doll", "Doll")
-                        .WithMany("Mods")
-                        .HasForeignKey("DollId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GFLIndexBackend.Models.DollRarity", "Rarity")
-                        .WithMany()
-                        .HasForeignKey("DollRarityId");
-
-                    b.HasOne("GFLIndexBackend.Models.DollType", "Type")
-                        .WithMany()
-                        .HasForeignKey("DollTypeId");
-
-                    b.Navigation("Doll");
-
-                    b.Navigation("Rarity");
-
-                    b.Navigation("Type");
-                });
-
             modelBuilder.Entity("GFLIndexBackend.Models.DollSkill", b =>
                 {
                     b.HasOne("GFLIndexBackend.Models.Doll", "Doll")
@@ -286,24 +258,14 @@ namespace GFLIndexBackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GFLIndexBackend.Models.DollMod", null)
-                        .WithMany("Skills")
-                        .HasForeignKey("DollModId");
-
                     b.Navigation("Doll");
                 });
 
             modelBuilder.Entity("GFLIndexBackend.Models.DollStats", b =>
                 {
                     b.HasOne("GFLIndexBackend.Models.Doll", "Doll")
-                        .WithMany("Stats")
-                        .HasForeignKey("DollId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GFLIndexBackend.Models.DollMod", null)
-                        .WithMany("Stats")
-                        .HasForeignKey("DollModId");
+                        .WithMany()
+                        .HasForeignKey("DollId");
 
                     b.Navigation("Doll");
                 });
@@ -311,36 +273,15 @@ namespace GFLIndexBackend.Migrations
             modelBuilder.Entity("GFLIndexBackend.Models.DollTiles", b =>
                 {
                     b.HasOne("GFLIndexBackend.Models.Doll", "Doll")
-                        .WithMany("Tiles")
-                        .HasForeignKey("DollId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GFLIndexBackend.Models.DollMod", null)
-                        .WithMany("Tiles")
-                        .HasForeignKey("DollModId");
+                        .WithMany()
+                        .HasForeignKey("DollId");
 
                     b.Navigation("Doll");
                 });
 
             modelBuilder.Entity("GFLIndexBackend.Models.Doll", b =>
                 {
-                    b.Navigation("Mods");
-
                     b.Navigation("Skills");
-
-                    b.Navigation("Stats");
-
-                    b.Navigation("Tiles");
-                });
-
-            modelBuilder.Entity("GFLIndexBackend.Models.DollMod", b =>
-                {
-                    b.Navigation("Skills");
-
-                    b.Navigation("Stats");
-
-                    b.Navigation("Tiles");
                 });
 
             modelBuilder.Entity("GFLIndexBackend.Models.DollRarity", b =>
