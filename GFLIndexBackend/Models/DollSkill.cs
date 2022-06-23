@@ -8,6 +8,6 @@
         public int? Cooldown { get; set; }
         public string? Description { get; set; }
         public int DollId { get; set; }
-        public Doll? Doll { get; set; }
+        public virtual Doll? Doll { get; set; }
     }
 }

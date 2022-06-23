@@ -7,6 +7,5 @@
         public int? InitialCooldown { get; set; }
         public int? Cooldown { get; set; }
         public string? Description { get; set; }
-        public Doll? Doll { get; set; }
     }
 }
