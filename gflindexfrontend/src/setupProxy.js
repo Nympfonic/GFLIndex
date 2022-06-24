@@ -1,7 +1,7 @@
 ﻿const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const context = [
-    "/gflindex",
+    "/api",
 ];
 
 module.exports = function (app) {

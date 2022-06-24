@@ -14,6 +14,51 @@
 
         public static DollDTO DollToDTO(Doll doll)
         {
+            var statsListDto = new List<DollStatsDTO>();
+            foreach (var s in doll.Stats!)
+            {
+                var statsDto = new DollStatsDTO
+                {
+                    Id = s.Id,
+                    Health = s.Health,
+                    AmmoConsumption = s.AmmoConsumption,
+                    RationConsumption = s.RationConsumption,
+                    Damage = s.Damage,
+                    Evasion = s.Evasion,
+                    Accuracy = s.Accuracy,
+                    RateOfFire = s.RateOfFire,
+                    MoveSpeed = s.MoveSpeed,
+                    Armor = s.Armor,
+                    CriticalRate = s.CriticalRate,
+                    CriticalDamage = s.CriticalDamage,
+                    ArmorPenetration = s.ArmorPenetration
+                };
+                statsListDto.Add(statsDto);
+            }
+            var tilesListDto = new List<DollTilesDTO>();
+            foreach (var t in doll.Tiles!)
+            {
+                var tilesDto = new DollTilesDTO
+                {
+                    Id = t.Id,
+                    Description = t.Description,
+                    TileImage = t.TileImage
+                };
+                tilesListDto.Add(tilesDto);
+            }
+            var skillListDto = new List<DollSkillDTO>();
+            foreach (var s in doll.Skills!)
+            {
+                var skillsDto = new DollSkillDTO
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    InitialCooldown = s.InitialCooldown,
+                    Cooldown = s.Cooldown,
+                    Description = s.Description
+                };
+                skillListDto.Add(skillsDto);
+            }
             return new()
             {
                 Id = doll.Id,
@@ -21,9 +66,9 @@
                 Image = doll.Image,
                 Rarity = doll.Rarity == null ? null : new DollRarityDTO { Id = doll.Rarity.Id, Rarity = doll.Rarity.Rarity },
                 Type = doll.Type == null ? null : new DollTypeDTO { Id = doll.Type.Id, Name = doll.Type.Name },
-                Stats = doll.Stats as ICollection<DollStatsDTO>,
-                Tiles = doll.Tiles as ICollection<DollTilesDTO>,
-                Skills = doll.Skills as ICollection<DollSkillDTO>
+                Stats = statsListDto,
+                Tiles = tilesListDto,
+                Skills = skillListDto
             };
         }
     }

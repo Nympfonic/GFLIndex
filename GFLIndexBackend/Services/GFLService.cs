@@ -18,6 +18,9 @@ namespace GFLIndexBackend.Services
             return await _context.Dolls
                 .Include(d => d.Rarity)
                 .Include(d => d.Type)
+                .Include(d => d.Stats)
+                .Include(d => d.Tiles)
+                .Include(d => d.Skills)
                 .Select(d => DollDTO.DollToDTO(d))
                 .ToListAsync();
         }
@@ -77,6 +80,51 @@ namespace GFLIndexBackend.Services
 
         private async Task<Doll> DTOToDoll(DollDTO dollDto)
         {
+            var statsList = new List<DollStats>();
+            foreach (var s in dollDto.Stats!)
+            {
+                var stats = new DollStats
+                {
+                    Id = s.Id,
+                    Health = s.Health,
+                    AmmoConsumption = s.AmmoConsumption,
+                    RationConsumption = s.RationConsumption,
+                    Damage = s.Damage,
+                    Evasion = s.Evasion,
+                    Accuracy = s.Accuracy,
+                    RateOfFire = s.RateOfFire,
+                    MoveSpeed = s.MoveSpeed,
+                    Armor = s.Armor,
+                    CriticalRate = s.CriticalRate,
+                    CriticalDamage = s.CriticalDamage,
+                    ArmorPenetration = s.ArmorPenetration
+                };
+                statsList.Add(stats);
+            }
+            var tilesList = new List<DollTiles>();
+            foreach (var t in dollDto.Tiles!)
+            {
+                var tiles = new DollTiles
+                {
+                    Id = t.Id,
+                    Description = t.Description,
+                    TileImage = t.TileImage
+                };
+                tilesList.Add(tiles);
+            }
+            var skillList = new List<DollSkill>();
+            foreach (var s in dollDto.Skills!)
+            {
+                var skills = new DollSkill
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    InitialCooldown = s.InitialCooldown,
+                    Cooldown = s.Cooldown,
+                    Description = s.Description
+                };
+                skillList.Add(skills);
+            }
             return new Doll
             {
                 Id = dollDto.Id,
@@ -90,9 +138,9 @@ namespace GFLIndexBackend.Services
                     .Where(dtype => dtype.Name == dollDto.Type!.Name)
                     .FirstOrDefaultAsync(),
                 DollTypeId = dollDto.Type!.Id,
-                Stats = dollDto.Stats as ICollection<DollStats>,
-                Tiles = dollDto.Tiles as ICollection<DollTiles>,
-                Skills = dollDto.Skills as ICollection<DollSkill>
+                Stats = statsList,
+                Tiles = tilesList,
+                Skills = skillList
             };
         }
     }
