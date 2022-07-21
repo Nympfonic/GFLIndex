@@ -19,3 +19,11 @@ main {
 main h1 {
   font-size: 48px;
 }
+
+thead tr {
+  text-align: left;
+}
+
+thead tr th, tbody tr td {
+  padding: 10px;
+}

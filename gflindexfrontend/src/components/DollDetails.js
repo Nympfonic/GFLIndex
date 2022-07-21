@@ -29,18 +29,18 @@ export default function DollDetails(props) {
                             <td>
                                 {props.data.stats.map(stat =>
                                     <ul key={stat.id}>
-                                        <li>{stat.health}</li>
-                                        <li>{stat.ammoConsumption}</li>
-                                        <li>{stat.rationConsumption}</li>
-                                        <li>{stat.damage}</li>
-                                        <li>{stat.evasion}</li>
-                                        <li>{stat.accuracy}</li>
-                                        <li>{stat.rateOfFire}</li>
-                                        <li>{stat.moveSpeed}</li>
-                                        <li>{stat.armor}</li>
-                                        <li>{stat.criticalRate}</li>
-                                        <li>{stat.criticalDamage}</li>
-                                        <li>{stat.armorPenetration}</li>
+                                        <li>HP: <b>{stat.health}</b></li>
+                                        <li>Ammo Consumption: <b>{stat.ammoConsumption}</b></li>
+                                        <li>Ration Consumption: <b>{stat.rationConsumption}</b></li>
+                                        <li>Damage: <b>{stat.damage}</b></li>
+                                        <li>Evasion: <b>{stat.evasion}</b></li>
+                                        <li>Accuracy: <b>{stat.accuracy}</b></li>
+                                        <li>Rate of Fire: <b>{stat.rateOfFire}</b></li>
+                                        <li>Movement Speed: <b>{stat.moveSpeed}</b></li>
+                                        <li>Armor: <b>{stat.armor}</b></li>
+                                        <li>Critical Rate: <b>{stat.criticalRate}</b></li>
+                                        <li>Critical Damage: <b>{stat.criticalDamage}</b></li>
+                                        <li>Armor Penetration: <b>{stat.armorPenetration}</b></li>
                                     </ul>
                                 )}
                             </td>
