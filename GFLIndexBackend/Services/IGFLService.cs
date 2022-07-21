@@ -1,5 +1,4 @@
-﻿using GFLIndexBackend.Models;
-using GFLIndexBackend.Models.DTO;
+﻿using GFLIndexBackend.Data.Models.DTO;
 
 namespace GFLIndexBackend.Services
 {

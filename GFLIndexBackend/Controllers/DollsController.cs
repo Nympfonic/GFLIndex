@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using GFLIndexBackend.Models;
-using GFLIndexBackend.Models.DTO;
+using GFLIndexBackend.Data.Models;
+using GFLIndexBackend.Data.Models.DTO;
 using GFLIndexBackend.Services;
 
 namespace GFLIndexBackend.Controllers

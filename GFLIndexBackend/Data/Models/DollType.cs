@@ -1,4 +1,4 @@
-﻿namespace GFLIndexBackend.Models
+﻿namespace GFLIndexBackend.Data.Models
 {
     public class DollType
     {

@@ -1,5 +1,6 @@
-﻿using GFLIndexBackend.Models;
-using GFLIndexBackend.Models.DTO;
+﻿using GFLIndexBackend.Data;
+using GFLIndexBackend.Data.Models;
+using GFLIndexBackend.Data.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 
 namespace GFLIndexBackend.Services

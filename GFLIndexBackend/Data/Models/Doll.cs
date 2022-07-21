@@ -1,6 +1,6 @@
-﻿namespace GFLIndexBackend.Models
+﻿namespace GFLIndexBackend.Data.Models
 {
-    public class DollMod
+    public class Doll
     {
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -12,7 +12,6 @@
         public virtual ICollection<DollStats>? Stats { get; set; }
         public virtual ICollection<DollTiles>? Tiles { get; set; }
         public virtual ICollection<DollSkill>? Skills { get; set; }
-        public int DollId { get; set; }
-        public virtual Doll? Doll { get; set; }
+        public virtual ICollection<DollMod>? Mods { get; set; }
     }
 }

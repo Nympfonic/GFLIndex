@@ -1,4 +1,4 @@
-using GFLIndexBackend.Models;
+using GFLIndexBackend.Data;
 using GFLIndexBackend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
