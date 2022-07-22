@@ -12,6 +12,11 @@ builder.Services.AddScoped<IGFLService, GFLService>();
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
+builder.Services.AddResponseCaching(options =>
+{
+    options.MaximumBodySize = 1024;
+    options.UseCaseSensitivePaths = true;
+});
 
 var app = builder.Build();
 
@@ -22,6 +27,22 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseResponseCaching();
+
+app.Use(async (context, next) =>
+{
+    context.Response.GetTypedHeaders().CacheControl =
+        new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+        {
+            Public = true,
+            MaxAge = TimeSpan.FromSeconds(10)
+        };
+    context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
+        new string[] { "Accept-Encoding" };
+
+    await next();
+});
 
 app.UseAuthorization();
 
