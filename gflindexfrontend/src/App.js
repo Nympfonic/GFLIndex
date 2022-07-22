@@ -1,59 +1,54 @@
 import React, { Component } from 'react';
 
+import DollDetails from './components/DollDetails';
+import DollsIndex from './components/DollsIndex';
+
 export default class App extends Component {
     static displayName = App.name;
 
     constructor(props) {
         super(props);
-        this.state = { forecasts: [], loading: true };
+        this.state = { data: [], loading: true, route: 'api/dolls' };
     }
 
     componentDidMount() {
-        this.populateWeatherData();
+        this.populateData(this.state.route);
     }
 
-    static renderForecastsTable(forecasts) {
-        return (
-            <table className='table table-striped' aria-labelledby="tabelLabel">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {forecasts.map(forecast =>
-                        <tr key={forecast.date}>
-                            <td>{forecast.date}</td>
-                            <td>{forecast.temperatureC}</td>
-                            <td>{forecast.temperatureF}</td>
-                            <td>{forecast.summary}</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-        );
+    changeRoute(route) {
+        this.setState({ data: [], loading: true, route: route});
+        this.populateData(route);
+    }
+
+    renderComponent(data, routePath) {
+        var idRegex = /api\/dolls\/\d{1,4}/;
+        switch (true) {
+            case routePath === 'api/dolls':
+                return <DollsIndex data={data} changeRoute={(route) => this.changeRoute(route)} />;
+            case idRegex.test(routePath):
+                return <DollDetails data={data} changeRoute={(route) => this.changeRoute(route)} />;
+            default:
+                return null;
+        }
     }
 
     render() {
         let contents = this.state.loading
-            ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-            : App.renderForecastsTable(this.state.forecasts);
+            ? <p>Loading...</p>
+            : this.renderComponent(this.state.data, this.state.route);
 
         return (
-            <div>
-                <h1 id="tabelLabel" >Weather forecast</h1>
-                <p>This component demonstrates fetching data from the server.</p>
+            <main>
+                <h1 id="tableLabel" >GFL Index</h1>
+                <p>This site contains a list of all dolls (characters) from a Chinese mobile gacha game known as Girls' Frontline.</p>
                 {contents}
-            </div>
+            </main>
         );
     }
 
-    async populateWeatherData() {
-        const response = await fetch('gflindex');
+    async populateData(route) {
+        const response = await fetch(route);
         const data = await response.json();
-        this.setState({ forecasts: data, loading: false });
+        this.setState({ data: data, loading: false });
     }
 }

@@ -1,0 +1,12 @@
+.dataContent {
+  display: flex;
+  margin-top: 2rem;
+}
+
+td > ul {
+  padding-left: 0;
+}
+
+td > ul > li {
+  list-style-type: none;
+}

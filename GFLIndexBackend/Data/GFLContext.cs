@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GFLIndexBackend.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace GFLIndexBackend.Models
+namespace GFLIndexBackend.Data
 {
     public class GFLContext : DbContext
     {

@@ -1,4 +1,4 @@
-﻿namespace GFLIndexBackend.Models.DTO
+﻿namespace GFLIndexBackend.Data.Models.DTO
 {
     public class DollStatsDTO
     {
