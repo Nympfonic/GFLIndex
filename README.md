@@ -31,17 +31,11 @@ You will need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/dow
 
 4. Build and run the project
 
-## Usage
-
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
-
-_For more examples and usage, please refer to the [Wiki][wiki]._
-
 ## Meta
 
 Nympfonic – arys.steam@gmail.com
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+Distributed under the MIT license. See ``LICENSE`` for more information.
 
 [https://github.com/Nympfonic](https://github.com/Nympfonic)
 
