@@ -41,7 +41,7 @@ _For more examples and usage, please refer to the [Wiki][wiki]._
 
 Nympfonic – arys.steam@gmail.com
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
+Distributed under the MIT license. See ``LICENSE`` for more information.
 
 [https://github.com/Nympfonic](https://github.com/Nympfonic)
 
