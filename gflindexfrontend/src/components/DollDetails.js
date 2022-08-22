@@ -10,7 +10,7 @@ export default function DollDetails(props) {
 
                 <table className='table table-striped' aria-labelledby='tableLabel'>
                     <thead>
-                        <tr>
+                        <tr className={styles.tableHeadings}>
                             <th>Id</th>
                             <th>Name</th>
                             <th>Rarity</th>
@@ -21,7 +21,7 @@ export default function DollDetails(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr className={styles.tableEntries}>
                             <td>{props.data.id}</td>
                             <td>{props.data.name}</td>
                             <td>{props.data.rarity.rarity}</td>
@@ -32,10 +32,12 @@ export default function DollDetails(props) {
                                         <li>HP: <b>{stat.health}</b></li>
                                         <li>Ammo Consumption: <b>{stat.ammoConsumption}</b></li>
                                         <li>Ration Consumption: <b>{stat.rationConsumption}</b></li>
+                                        <li><hr></hr></li>
                                         <li>Damage: <b>{stat.damage}</b></li>
                                         <li>Evasion: <b>{stat.evasion}</b></li>
                                         <li>Accuracy: <b>{stat.accuracy}</b></li>
                                         <li>Rate of Fire: <b>{stat.rateOfFire}</b></li>
+                                        <li><hr></hr></li>
                                         <li>Movement Speed: <b>{stat.moveSpeed}</b></li>
                                         <li>Armor: <b>{stat.armor}</b></li>
                                         <li>Critical Rate: <b>{stat.criticalRate}</b></li>

@@ -3,10 +3,27 @@
   margin-top: 2rem;
 }
 
+.dataContent > img {
+  width: auto;
+  height: 100%;
+  align-self: center;
+  margin-right: 2rem;
+}
+
 td > ul {
   padding-left: 0;
 }
 
 td > ul > li {
   list-style-type: none;
+}
+
+td > ul > li > hr {
+  height: 2px;
+  background-color: #584100;
+  border: none;
+}
+
+.tableEntries {
+  color: #c59100;
 }
